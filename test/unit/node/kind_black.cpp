@@ -32,7 +32,7 @@ class TestNodeBlackKind : public TestInternal
   void SetUp() override
   {
     d_undefined = UNDEFINED_KIND;
-    d_null = NULL_EXPR;
+    d_null = NIL_EXPR;
     d_last = LAST_KIND;
     d_beyond = ((int32_t)LAST_KIND) + 1;
     d_unknown = (Kind)d_beyond;

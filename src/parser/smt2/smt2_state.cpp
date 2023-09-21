@@ -1124,7 +1124,7 @@ Term Smt2State::parseOpToExpr(ParseOp& p)
 {
   Trace("parser") << "parseOpToExpr: " << p << std::endl;
   Term expr;
-  if (p.d_kind != Kind::NULL_TERM)
+  if (p.d_kind != Kind::NIL_TERM)
   {
     parseError(
         "Bad syntax for qualified identifier operator in term position.");
@@ -1146,7 +1146,7 @@ Term Smt2State::applyParseOp(const ParseOp& p, std::vector<Term>& args)
 {
   bool isBuiltinOperator = false;
   // the builtin kind of the overall return expression
-  Kind kind = Kind::NULL_TERM;
+  Kind kind = Kind::NIL_TERM;
   // First phase: process the operator
   if (TraceIsOn("parser"))
   {
@@ -1263,7 +1263,7 @@ Term Smt2State::applyParseOp(const ParseOp& p, std::vector<Term>& args)
     }
     return d_solver->mkTerm(op, args);
   }
-  else if (p.d_kind != Kind::NULL_TERM)
+  else if (p.d_kind != Kind::NIL_TERM)
   {
     // It is a special case, e.g. tuple.select or array constant specification.
     // We have to wait until the arguments are parsed to resolve it.
@@ -1396,7 +1396,7 @@ Term Smt2State::applyParseOp(const ParseOp& p, std::vector<Term>& args)
     kind = p.d_kind;
     args.insert(args.begin(), iop);
   }
-  else if (p.d_kind != Kind::NULL_TERM)
+  else if (p.d_kind != Kind::NIL_TERM)
   {
     // it should not have an expression or type specified at this point
     if (!p.d_expr.isNull())
@@ -1528,7 +1528,7 @@ Term Smt2State::applyParseOp(const ParseOp& p, std::vector<Term>& args)
       }
     }
   }
-  if (kind == Kind::NULL_TERM)
+  if (kind == Kind::NIL_TERM)
   {
     // should never happen in the new API
     parseError("do not know how to process parse op");

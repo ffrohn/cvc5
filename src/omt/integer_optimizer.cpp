@@ -40,7 +40,7 @@ OptimizationResult OMTOptimizerInteger::optimize(SolverEngine* optChecker,
   }
   // node storing target > old_value (used in optimization loop)
   Node increment;
-  Kind incrementalOperator = kind::NULL_EXPR;
+  Kind incrementalOperator = kind::NIL_EXPR;
   if (isMinimize)
   {
     // if objective is minimize,

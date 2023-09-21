@@ -85,7 +85,7 @@ enum ENUM(Kind) : int32_t
    *           :cpp:func:`Term::Term()`.
    * \endrst
    */
-  EVALUE(NULL_TERM),
+  EVALUE(NIL_TERM),
 
   /* Builtin --------------------------------------------------------------- */
 

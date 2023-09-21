@@ -415,7 +415,7 @@ std::ostream& operator<<(std::ostream& out, const NodeValue& nv);
 inline NodeValue::NodeValue(int) :
   d_id(0),
   d_rc(MAX_RC),
-  d_kind(kind::NULL_EXPR),
+  d_kind(kind::NIL_EXPR),
   d_nchildren(0) {
 }
 

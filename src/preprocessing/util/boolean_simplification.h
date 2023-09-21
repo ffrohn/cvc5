@@ -163,8 +163,8 @@ class BooleanSimplification
   {
     AssertArgument(buffer.empty(), buffer);
     AssertArgument(!n.isNull(), n);
-    AssertArgument(k != kind::UNDEFINED_KIND && k != kind::NULL_EXPR, k);
-    AssertArgument(notK != kind::NULL_EXPR, notK);
+    AssertArgument(k != kind::UNDEFINED_KIND && k != kind::NIL_EXPR, k);
+    AssertArgument(notK != kind::NIL_EXPR, notK);
     AssertArgument(n.getKind() == k,
                    n,
                    "expected node to have kind %s",

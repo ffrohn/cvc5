@@ -35,7 +35,7 @@ NodeBuilder::NodeBuilder(Kind k)
       d_nm(NodeManager::currentNM()),
       d_nvMaxChildren(default_nchild_thresh)
 {
-  Assert(k != kind::NULL_EXPR && k != kind::UNDEFINED_KIND)
+  Assert(k != kind::NIL_EXPR && k != kind::UNDEFINED_KIND)
       << "illegal Node-building kind";
 
   d_inlineNv.d_id = 1;  // have a kind already
@@ -56,7 +56,7 @@ NodeBuilder::NodeBuilder(NodeManager* nm)
 NodeBuilder::NodeBuilder(NodeManager* nm, Kind k)
     : d_nv(&d_inlineNv), d_nm(nm), d_nvMaxChildren(default_nchild_thresh)
 {
-  Assert(k != kind::NULL_EXPR && k != kind::UNDEFINED_KIND)
+  Assert(k != kind::NIL_EXPR && k != kind::UNDEFINED_KIND)
       << "illegal Node-building kind";
 
   d_inlineNv.d_id = 1;  // have a kind already
@@ -145,7 +145,7 @@ Node NodeBuilder::operator[](int i) const { return getChild(i); }
 
 void NodeBuilder::clear(Kind k)
 {
-  Assert(k != kind::NULL_EXPR) << "illegal Node-building clear kind";
+  Assert(k != kind::NIL_EXPR) << "illegal Node-building clear kind";
 
   if (CVC5_PREDICT_FALSE(nvIsAllocated()))
   {
@@ -181,7 +181,7 @@ NodeBuilder& NodeBuilder::operator<<(const Kind& k)
   Assert(d_nv->d_id == 0)
       << "internal inconsistency with NodeBuilder: d_id != 0";
   AssertArgument(
-      k != kind::UNDEFINED_KIND && k != kind::NULL_EXPR && k < kind::LAST_KIND,
+      k != kind::UNDEFINED_KIND && k != kind::NIL_EXPR && k < kind::LAST_KIND,
       k,
       "illegal node-building kind");
   // This test means: we didn't have a Kind at the beginning (on
@@ -689,7 +689,7 @@ void NodeBuilder::crop()
 NodeBuilder& NodeBuilder::collapseTo(Kind k)
 {
   AssertArgument(
-      k != kind::UNDEFINED_KIND && k != kind::NULL_EXPR && k < kind::LAST_KIND,
+      k != kind::UNDEFINED_KIND && k != kind::NIL_EXPR && k < kind::LAST_KIND,
       k,
       "illegal collapsing kind");
 

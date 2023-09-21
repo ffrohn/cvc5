@@ -32,7 +32,7 @@ const char* toString(cvc5::internal::Kind k)
   {
     /* special cases */
     case UNDEFINED_KIND: return "UNDEFINED_KIND";
-    case NULL_EXPR: return "NULL";
+    case NIL_EXPR: return "NULL";
       // clang-format off
     ${kind_printers}
       // clang-format on
@@ -90,7 +90,7 @@ TheoryId kindToTheoryId(cvc5::internal::Kind k)
   switch (k)
   {
     case kind::UNDEFINED_KIND:
-    case kind::NULL_EXPR:
+    case kind::NIL_EXPR:
       break;
       // clang-format off
 ${kind_to_theory_id}

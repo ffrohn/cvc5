@@ -51,7 +51,7 @@ struct NodeValueCompare {
  * mean, see src/theory/builtin/kinds.
  */
 enum MetaKind_t {
-  INVALID = -1, /**< special node non-kinds like NULL_EXPR or LAST_KIND */
+  INVALID = -1, /**< special node non-kinds like NIL_EXPR or LAST_KIND */
   VARIABLE, /**< special node kinds: no operator */
   OPERATOR, /**< operators that get "inlined" */
   PARAMETERIZED, /**< parameterized ops (like APPLYs) that carry extra data */

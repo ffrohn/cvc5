@@ -179,7 +179,7 @@ void Smt2Printer::toStream(std::ostream& out,
                            LetBinding* lbind) const
 {
   // null
-  if(n.getKind() == kind::NULL_EXPR) {
+  if(n.getKind() == kind::NIL_EXPR) {
     out << "null";
     return;
   }

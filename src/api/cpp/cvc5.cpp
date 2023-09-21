@@ -118,7 +118,7 @@ const static std::unordered_map<Kind, std::pair<internal::Kind, std::string>>
     s_kinds{
         KIND_ENUM(Kind::INTERNAL_KIND, internal::Kind::UNDEFINED_KIND),
         KIND_ENUM(Kind::UNDEFINED_KIND, internal::Kind::UNDEFINED_KIND),
-        KIND_ENUM(Kind::NULL_TERM, internal::Kind::NULL_EXPR),
+        KIND_ENUM(Kind::NIL_TERM, internal::Kind::NIL_EXPR),
         /* Builtin ---------------------------------------------------------- */
         KIND_ENUM(Kind::UNINTERPRETED_SORT_VALUE,
                   internal::Kind::UNINTERPRETED_SORT_VALUE),
@@ -459,7 +459,7 @@ const static std::unordered_map<SortKind,
                        internal::Kind::UNDEFINED_KIND),
         SORT_KIND_ENUM(SortKind::UNDEFINED_SORT_KIND,
                        internal::Kind::UNDEFINED_KIND),
-        SORT_KIND_ENUM(SortKind::NULL_SORT, internal::Kind::NULL_EXPR),
+        SORT_KIND_ENUM(SortKind::NULL_SORT, internal::Kind::NIL_EXPR),
         /* Sorts ------------------------------------------------------------ */
         // Note that many entries in this map (e.g. for type constants) are
         // given only for completeness and are not used since we don't
@@ -495,7 +495,7 @@ const static std::unordered_map<internal::Kind,
                                 internal::kind::KindHashFunction>
     s_kinds_internal{
         {internal::Kind::UNDEFINED_KIND, Kind::UNDEFINED_KIND},
-        {internal::Kind::NULL_EXPR, Kind::NULL_TERM},
+        {internal::Kind::NIL_EXPR, Kind::NIL_TERM},
         /* Builtin --------------------------------------------------------- */
         {internal::Kind::UNINTERPRETED_SORT_VALUE,
          Kind::UNINTERPRETED_SORT_VALUE},
@@ -832,7 +832,7 @@ const static std::
     unordered_map<internal::Kind, SortKind, internal::kind::KindHashFunction>
         s_sort_kinds_internal{
             {internal::Kind::UNDEFINED_KIND, SortKind::UNDEFINED_SORT_KIND},
-            {internal::Kind::NULL_EXPR, SortKind::NULL_SORT},
+            {internal::Kind::NIL_EXPR, SortKind::NULL_SORT},
             {internal::Kind::ABSTRACT_TYPE, SortKind::ABSTRACT_SORT},
             {internal::Kind::ARRAY_TYPE, SortKind::ARRAY_SORT},
             {internal::Kind::BAG_TYPE, SortKind::BAG_SORT},
@@ -2084,7 +2084,7 @@ bool Sort::isNullHelper() const { return d_type->isNull(); }
 
 Op::Op()
     : d_nm(internal::NodeManager::currentNM()),
-      d_kind(Kind::NULL_TERM),
+      d_kind(Kind::NIL_TERM),
       d_node(new internal::Node())
 {
 }
@@ -2134,7 +2134,7 @@ bool Op::operator!=(const Op& t) const
 
 Kind Op::getKind() const
 {
-  CVC5_API_CHECK(d_kind != Kind::NULL_TERM) << "Expecting a non-null Kind";
+  CVC5_API_CHECK(d_kind != Kind::NIL_TERM) << "Expecting a non-null Kind";
   //////// all checks before this line
   return d_kind;
 }
@@ -2443,7 +2443,7 @@ std::ostream& operator<<(std::ostream& out, const Op& t)
 
 bool Op::isNullHelper() const
 {
-  return (d_node->isNull() && (d_kind == Kind::NULL_TERM));
+  return (d_node->isNull() && (d_kind == Kind::NIL_TERM));
 }
 
 bool Op::isIndexedHelper() const { return !d_node->isNull(); }
